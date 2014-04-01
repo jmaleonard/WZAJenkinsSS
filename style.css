@@ -1,0 +1,1976 @@
+/*
+ * The MIT License
+ * 
+ * Copyright (c) 2004-2010, Sun Microsystems, Inc., Kohsuke Kawaguchi, Daniel Dyer, Stephen Connolly
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+body {
+  margin: 0;
+  padding: 0;
+  background: white;
+}
+
+body, table, form, input, td, th, p, textarea, select
+{
+  font-family: Verdana, Helvetica, sans serif;
+  font-size: 11px;
+}
+
+FORM {
+  margin: 0;
+}
+
+td {
+  vertical-align: top;
+}
+
+dt {
+  font-weight: bold;
+}
+
+.fixed-width {
+  font-family: Courier, monospace;
+}
+
+.center {
+  text-align: center;
+}
+
+.middle-align td, td.middle-align {
+  vertical-align: middle;
+}
+
+.center-align td, td.center-align {
+  text-align: center;
+}
+
+.no-wrap td, td.no-wrap {
+  white-space: nowrap;
+}
+
+#main-table {
+  padding: 0;
+  border-collapse: collapse;
+}
+
+#top-panel {
+  background: url("img_TopBackground.jpg") repeat; }
+  #top-panel td#login-field span a {
+    background: none;
+	color: #3465A4;}
+  #top-panel td #searchform a {
+    background: none;
+    height: auto;
+    width: auto; }
+  #top-panel td > a {
+    background: url("sitelogo.gif") 0 0 no-repeat;
+    display: block;
+    width: 130px;
+    height: 40px;
+    margin: 10px 0 10px 10px; }
+    #top-panel td > a img {
+      display: none; }
+#top-panel a {
+  text-decoration: none;
+}
+
+#main-panel {
+  padding: 10px;
+    padding-top: 0px;
+}
+
+#side-panel {
+  padding: 4px;
+  width: 220px;
+}
+
+#footer {
+  text-align: right;
+  font-size: 8pt;
+  margin-top: 10em;
+  padding: 10px;
+  border-top: 1px solid #bbb;
+}
+
+#tasks {
+  padding: 4px;
+}
+
+.skiplink {
+    position: absolute;
+    left: -20000px;
+}
+
+#shutdown-msg {
+    font-weight: bold;
+    color: white;
+    background-color: #ef2929;
+    text-align: center;
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+    -moz-border-radius: 0.5em;
+}
+
+a:link {
+  text-decoration: underline;
+  color: #204A87;
+}
+
+a:visited {
+  text-decoration: underline;
+  color: #5c3566;
+}
+
+a.lowkey:link {
+  text-decoration: none;
+  color: inherit;
+}
+
+a.lowkey:hover {
+  text-decoration: underline;
+  color: inherit;
+}
+
+a.lowkey:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* tip - anchors of class info */
+a.tip {
+  position:relative;
+  z-index:24;
+  text-decoration: underline;
+}
+
+a.tip:hover {
+  z-index:25;
+}
+
+a.tip span {
+  display: none
+}
+
+a.tip:hover span {
+  display:block;
+  position:absolute;
+  top:2em;
+  left:2em;
+  width:400px;
+  border:1px solid #bbbbbb;
+  background-color:#fffff0;
+  color:#000;
+  text-align: left
+}
+
+img {
+  vertical-align: middle;
+  border: 0;
+}
+
+div.disabled {
+    opacity : 0.4;
+    filter: alpha(opacity=40); /* msie */
+    background-color: #000;
+}
+
+table.tab {
+  border-collapse: collapse;
+}
+
+td.selected_tab {
+  vertical-align: middle;
+  border: 1px #090 solid;
+  background: #ffffff;
+}
+
+td.tab_filler {
+  background: #ffffff;
+  border-bottom: 1px #090 solid;
+}
+
+td.tab {
+  vertical-align: middle;
+  border: 1px #090 solid;
+  background: #f0f0f0;
+}
+
+.dashboard td {
+  padding: 4px 4px 4px 4px;
+}
+
+pre {/* see http://users.tkk.fi/tkarvine/pre-wrap-css3-mozilla-opera-ie.html */
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    margin: 0;
+}
+
+pre.console {
+  overflow: auto;
+}
+
+.setting-leftspace {
+  width: 2em;
+}
+
+.setting-name {
+  white-space: nowrap;
+}
+
+.setting-main {
+  width: 100%; /* try to make this column as big as possible. */
+}
+.setting-help {
+  width: 16px;
+}
+
+.setting-input {
+  width: 100%;
+}
+
+.setting-description {
+  font-size: 0.8em;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* div that looks like a hyperlink */
+.pseudoLink {
+  cursor: pointer;
+}
+
+.advancedLink {
+  text-align: right;
+}
+
+.advancedBody {
+  display: none;
+}
+
+.scm_info {
+  width: 480px;
+}
+
+.build-row {
+  padding: 3px 4px 3px 4px;
+}
+
+.build-keep {
+  font-weight: bold;
+}
+
+.task-header {
+  display: block;
+  border-bottom: 1px #090 solid;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+.task {
+  white-space: nowrap;
+}
+
+.subtasks {
+  padding-left: 1em;
+}
+
+.main-table {
+}
+
+div.dashboard {
+  width: 100%;
+  clear:both;
+}
+
+.pane  {
+  margin-top: 4px;
+  white-space: nowrap;
+}
+.pane td {
+  padding: 4px 4px 3px 4px;
+}
+
+table.pane {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px #bbb solid;
+}
+table.pane > tbody > tr > td:last-child {
+  border-right: 1px #bbb solid;
+}
+
+td.pane {
+  border: 1px #bbb solid;
+  padding: 3px 4px 3px 4px;
+  vertical-align: middle;
+}
+
+td.pane-header {
+  border: 1px #bbb solid;
+  border-right: none;
+  border-left: none;
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+th.pane {
+  border: 1px #bbb solid;
+  font-weight: bold;
+}
+
+.bigtable tr {
+  border: 1px solid #bbb;
+  padding: 3px 4px 3px 4px;
+}
+
+.bigtable tr:hover {
+  background-color: #f0f0f0;
+}
+
+.bigtable th {
+  font-weight: bold;
+  border: none;
+  background-color: #f0f0f0;
+  padding: 3px 4px 3px 4px;
+}
+
+.bigtable td {
+  vertical-align: middle;
+  padding: 3px 4px 3px 4px;
+}
+
+.smallfont {
+  font-size: 9px;
+}
+
+#foldertab {
+  padding: 4px 0;
+  margin-left: 0;
+  border-bottom: 1px solid #090;
+  font: bold 12px Verdana, sans-serif;
+}
+
+#foldertab li {
+  list-style: none;
+  margin: 0;
+  display: inline;
+}
+
+#foldertab li a {
+  padding: 4px 0.5em;
+  margin-left: 3px;
+  border: 1px solid #090;
+  border-bottom: none;
+  background: #090;
+  text-decoration: none;
+}
+
+#foldertab li a:link { color: white; }
+#foldertab li a:visited { color: white; }
+
+#foldertab li a:hover {
+  color: white;
+  background: #6c0;
+  border-color: #6c0;
+}
+
+#foldertab li a#current {
+  background: white;
+  border-bottom: 1px solid white;
+  color: black;
+}
+
+.changeset-message {
+  border: 1px solid #ccb;
+  background: #eed;
+  padding: 4px;
+  white-space: normal;
+}
+
+.disabledJob {
+  color: gray;
+}
+
+.spinner {
+  padding-left: 32px;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  background-image: url("../images/spinner.gif");
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+.spinner-right {
+  padding-right: 32px;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  background-image: url("../images/spinner.gif");
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+#login-field {
+    vertical-align: middle;
+    padding-right: 1em;
+    width:1px;
+}
+
+#login-field SPAN {
+  white-space:nowrap;
+  color: #3465A4;
+}
+
+#login-field A {
+    /*
+      link inside login field should be always white.
+      If I set this to inherit, it won't work in IE7
+     */
+    color: white;
+}
+
+div.behavior-loading {
+    position: absolute; width: 80%; height:100%;
+    background-color: #e4e4e4; text-align: center; font-size: 300%;
+    opacity: 0.5;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    filter: alpha(opacity=50);
+}
+
+LABEL.attach-previous {
+    margin-left: 0.5em;
+}
+
+.bottom-sticker, #bottom-sticker {
+    width:  100%;   /* it needs to occupy the entire width or else the underlying content will see through */
+}
+.bottom-sticker-inner {
+    background:white;
+    padding:1em;
+}
+.bottom-sticker-edge {
+    height:16px;
+    background-image: url("../images/bottom-sticker-top-edge.png");
+    background-repeat: repeat-x;
+}
+
+.top-sticker, #top-sticker {
+    width:  100%;   /* it needs to occupy the entire width or else the underlying content will see through */
+    z-index: 999;
+}
+.top-sticker-inner {
+    background:white;
+    padding:1em;
+}
+.top-sticker-edge {
+    height:16px;
+    background-image: url("../images/top-sticker-bottom-edge.png");
+    background-repeat: repeat-x;
+}
+.top-sticker.noedge > .top-sticker-edge {
+    display: none;
+}
+
+.top-sticker.noedge > .top-sticker-inner {
+    padding:0;
+}
+
+
+/* ======================== error/warning message (mainly in the form.) Use them on block elements ======================== */
+.error {
+    color: #CC0000;
+    font-weight: bold;
+    padding-left: 20px;
+    min-height: 16px;
+    background-image: url("../images/16x16/error.gif");
+    background-position: left center;
+    background-repeat: no-repeat;
+}
+
+.error-inline {
+    color: #CC0000;
+    font-weight: bold;
+}
+
+.warning {
+    color: #C4A000;
+    font-weight: bold;
+    padding-left: 20px;
+    min-height: 16px;
+    background-image: url( "../images/16x16/warning.gif" );
+    background-position: left center;
+    background-repeat: no-repeat;
+}
+
+.warning-inline {
+    color: #C4A000;
+    font-weight: bold;
+}
+
+.info {
+    color: black;
+    font-weight: bold;
+    padding-left: 20px;
+    min-height: 16px;
+    background-image: url( "../images/16x16/go-next.png" ); /* TODO: get a better icon */
+    background-position: left center;
+    background-repeat: no-repeat;
+}
+
+.icon16x16 {
+    width: 16px;
+    height: 16px;
+}
+
+.icon24x24 {
+    width: 24px;
+    height: 24px;
+}
+
+.icon32x32 {
+    width: 32px;
+    height: 32px;
+}
+
+/* ====================== help ===================================== */
+
+.help {
+  display: none;  /* hidden until loaded */
+  border: solid #bbb 1px;
+  background-color: #f0f0f0;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+.help .from-plugin {
+    text-align: right;
+    color: #666;
+}
+
+.help-area {
+  /* this marker class is used by JavaScript to locate the area to display help text. */
+}
+
+
+/* ====================== project view tab bar ===================================== */
+#viewList {
+  border: none;
+  margin-bottom: 0px;
+  width: 100%;
+  white-space: nowrap;
+}
+#viewList td {
+  padding: 0px;
+}
+#viewList td.inactive {
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+}
+#viewList td.inactive:hover {
+  background-color: #777;
+}
+#viewList td.inactive a {
+  text-decoration: none;
+  color: #444
+}
+#viewList td.noleft {
+  border-left: none;
+}
+#viewList td.noright {
+  border-right: none;
+}
+#viewList td.active {
+  border: solid 1px #bbb;
+  padding: 0.5em;
+  border-bottom: none;
+  vertical-align:middle;
+  background-color: rgb(240,240,240);
+  font-weight: bold;
+  white-space: nowrap;
+}
+#viewList td.filler {
+  border: none;
+  border-bottom: solid 1px #bbb;
+  width: 100%;
+  text-align: right;
+}
+#viewList a {
+  display: block;
+  padding: 0.5em;
+  white-space: nowrap;
+}
+
+#projectstatus th {
+  text-align: left;
+}
+
+/* ============================ list view entries ======================== */
+div.listview-jobs {
+  max-height:300px;
+  overflow:auto;
+}
+
+/* ============================ parameters form ========================== */
+
+table.parameters {
+  border-collapse: collapse;
+}
+
+table.parameters > tbody > tr:first-child > td {
+  padding-top: 4px;
+}
+
+table.parameters .setting-description {
+  padding-bottom: 4px;
+}
+
+table.parameters > tbody:hover {
+  background-color: #f0f0f0;
+}
+
+/* ============================ health report hover ========================== */
+
+.healthReport a {
+    text-decoration: none;
+}
+
+.healthReport div.healthReportDetails {
+    display: none;
+}
+
+.healthReport:hover, .healthReport.hover { /* fix IE6 bug with :hover */
+    background: transparent;
+}
+
+.healthReport:hover div.healthReportDetails, .healthReport.hover div.healthReportDetails {
+    display: block;
+    position: absolute;
+    background-color: #ffe;
+    border: 1px solid #bbb;
+    margin-left: 32px; /* move it across a bit */
+    z-index: 26;
+}
+
+.healthReport div.healthReportDetails table {
+    border-collapse: collapse;
+    width: 450px; /* fix IE bug with width */
+}
+
+/* ========================= build history ========================= */
+#buildHistory .healthReport {
+    display: inline;
+    margin-right: 1em;
+}
+
+#buildHistory tr.no-wrap td.middle-align {
+    padding: 0;
+}
+
+#buildHistory td.desc {
+    padding: 0;
+    white-space: normal;
+}
+
+/* ========================= editable combobox style ========================= */
+.comboBoxList {
+  border: 1px solid #000;
+  overflow: visible;
+  color: MenuText;
+  background-color: Menu;
+}
+.comboBoxSelectedItem {
+  background-color: Highlight;
+  color: HighlightText;
+}
+.combobox-values {
+  display: none;
+}
+
+
+/* ========================= directory tree ========================= */
+.parentPath {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.dirTree li {
+  list-style: none;
+}
+
+.dirTree .rootIcon {
+  margin-right: 1em;
+}
+
+TABLE.fileList {
+  margin-left: 2em;
+  padding: 0;
+}
+
+TABLE.fileList TD {
+  padding: 0;
+}
+
+TABLE.fileList TD.fileSize {
+  padding-left: 2em;
+  text-align: right;
+  color: #888;
+}
+
+
+
+/* ========================= test result ========================= */
+.result-passed {
+  color: #3465a4;
+}
+
+.result-skipped {
+  color: #ddbb00;
+}
+
+.result-fixed {
+  color: #3465a4;
+  font-weight: bold;
+}
+
+.result-failed {
+  color: #ef2929;
+}
+
+.result-regression {
+  color: #ef2929;
+  font-weight: bold;
+}
+.test-trend-caption {
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+
+
+/* ========================= sortable table ========================= */
+table.sortable a.sortheader {
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+table.sortable span.sortarrow {
+  color: black;
+  text-decoration: none;
+}
+
+
+
+
+/* ========================= fingerprint ========================= */
+.md5sum {
+  text-align: right;
+}
+
+.fingerprint-summary-header {
+  font-size: 1.2em;
+  vertical-align: middle;
+}
+
+TABLE.fingerprint-in-build TD {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+
+
+
+/* ========================= plugin manager ========================= */
+#plugins {
+  margin-top: 0;
+  border-top: none;
+}
+
+#pluginsAdv tr:hover {
+  background-color: inherit;
+}
+
+#plugins tr.already-upgraded {
+  background-color: #e8eeee;
+}
+
+
+/* ========================= repeatable elements ========================= */
+
+.repeated-chunk .show-if-last      { visibility: hidden; }
+.repeated-chunk.last .show-if-last { visibility: visible; }
+
+.repeated-chunk .show-if-not-last      { visibility: visible; }
+.repeated-chunk.last .show-if-not-last { visibility: hidden; }
+
+.repeated-chunk .show-if-not-only      { visibility: visible; }
+.repeated-chunk.only .show-if-not-only { visibility: hidden; }
+
+/* == nested erpeatable elements / 2 deep == */
+.repeated-chunk .repeated-chunk .show-if-last      { visibility: hidden; }
+.repeated-chunk .repeated-chunk.last .show-if-last { visibility: visible; }
+
+.repeated-chunk .repeated-chunk .show-if-not-last      { visibility: visible; }
+.repeated-chunk .repeated-chunk.last .show-if-not-last { visibility: hidden; }
+
+.repeated-chunk .repeated-chunk .show-if-not-only      { visibility: visible; }
+.repeated-chunk .repeated-chunk.only .show-if-not-only { visibility: hidden; }
+
+/* == nested erpeatable elements / 3 deep == */
+.repeated-chunk .repeated-chunk .repeated-chunk .show-if-last      { visibility: hidden; }
+.repeated-chunk .repeated-chunk .repeated-chunk.last .show-if-last { visibility: visible; }
+
+.repeated-chunk .repeated-chunk .repeated-chunk .show-if-not-last      { visibility: visible; }
+.repeated-chunk .repeated-chunk .repeated-chunk.last .show-if-not-last { visibility: hidden; }
+
+.repeated-chunk .repeated-chunk .repeated-chunk .show-if-not-only      { visibility: visible; }
+.repeated-chunk .repeated-chunk .repeated-chunk.only .show-if-not-only { visibility: hidden; }
+
+/*
+    <DIV>s marked with to-be-removed is used in conjunction with repetable.jelly and hetero-list.jelly
+    and represents a master copy that gets pulled out from HTML, then inserted later upon demand multiple times
+    when the user does "Add".
+*/
+DIV.to-be-removed { display: none; }
+
+/* ========================= Other form related CSS ========================= */
+
+.row-set-end { display: none; }
+
+/* ========================= Yahoo UI style adjustments ========================= */
+.ygtvlabel, .ygtvlabel:link, .ygtvlabel:visited, .ygtvlabel:hover {
+	color: inherit;
+}
+
+DIV.yahooTree td {
+  vertical-align: middle;
+}
+
+.yui-tt {
+  border: 1px solid black !important;
+  background-color: #FFFFFF !important;
+  padding: 2px !important;
+  font-family: inherit !important;
+  color: inherit !important;
+}
+
+.yui-skin-sam .yui-tt .bd {
+  border: none !important;
+  background-color: #FFF !important;
+}
+
+.yuimenu LI .yui-menu-tooltip {
+  color: #A6A6A6;
+}
+
+.yuimenu LI.yui-menuitem-tooltip {
+  border-bottom: 1px solid #808080;
+  padding-bottom: 3px;
+  margin-bottom: 1em;
+}
+
+/* ========================= search box at the top-right of the page ========================= */
+#search-box {
+  background: white url(../images/16x16/search.gif) no-repeat 2px center;
+  padding-left: 20px;
+  width: 15em;
+  position: static; 
+}
+
+#search-box.defaulted {
+  color: gray;
+}
+
+#search-box-completion {
+  text-align: left;
+  width:25em;
+  position: absolute;
+  z-index: 1000;
+}
+
+#search-box-completion .yui-ac-content {
+  border: 1px solid black;
+  width:25em;
+  background-color: white;
+  overflow: hidden;
+}
+
+#search-box-completion UL {
+  padding: 0 0;
+  width: 100%;
+  margin: 0 0;
+  list-style: none;
+}
+#search-box-completion LI {
+  padding-left:20px;
+  white-space:nowrap;
+}
+#search-box-completion LI.yui-ac-highlight {
+  background: #729FCF;
+}
+#search-box-minWidth {
+  position:absolute;
+  visibility: hidden;
+  width:15em;
+}
+
+#search-box-sizer {
+  position:absolute;
+  visibility: hidden;
+}
+
+
+/* ========================= resizable text area ========================= */
+
+TEXTAREA {
+    margin-bottom: 0;
+}
+DIV.textarea-handle {
+    height: 5px;
+    font-size: 0;
+    background: #EEE url(../images/textarea-handle.gif) no-repeat 50% 1px;
+    border: 1px solid #BABDB6;
+    border-top: none;
+    cursor: s-resize;
+}
+TEXTAREA.rich-editor {
+  visibility: hidden;
+}
+
+/* ========================= hover notification ========================= */
+
+#hoverNotification {
+    visibility:hidden;
+    background-color: white;
+    border: 1px solid black;
+    padding: 0.5em;
+}
+
+/* ========================= D&D support in heterogenous/repeatable lists = */
+
+.hetero-list-container .dd-handle, .repeated-container .dd-handle {
+    cursor: move;
+    background-image: url(../images/grip.png);
+    background-repeat: repeat-y;
+    padding-left: 20px;
+}
+
+.hetero-list-container.with-drag-drop .repeated-chunk.hover {
+    border: 2px dashed #CCC;
+}
+
+.hetero-list-container.with-drag-drop .repeated-chunk {
+    border: 2px dashed transparent;
+    padding: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+
+/* ========================= plugin update center ========================= */
+
+#plugins .excerpt {
+    white-space: normal;
+    margin-top: 0.5em;
+    padding-left: 2em;
+    color: #888a85;
+}
+
+#plugins .compatWarning {
+    white-space: normal;
+    margin-top: 0.5em;
+    padding-left: 2em;
+    color: #FF0000;
+}
+
+/* ========================= progress bar ========================= */
+
+table.progress-bar {
+  border-collapse: collapse;
+  border: 1px solid #3465a4;
+  height: 6px;
+  width: 100px;
+  clear: none;
+}
+
+table.progress-bar tr.unknown {
+    background-image:url(../images/progress-unknown.gif);
+}
+
+td.progress-bar-done {
+  background-color: #3465a4;
+}
+
+td.progress-bar-left {
+  background-color: #ffffff;
+}
+
+table.progress-bar.red {
+  border: 1px solid #cc0000;
+}
+
+table.progress-bar.red tr.unknown {
+    background-image:url(../images/progress-unknown-red.gif);
+}
+table.progress-bar.red td.progress-bar-done {
+  background-color: #cc0000;
+}
+
+/* ========================= notification bar ========================= */
+#notification-bar {
+    width:100%;
+    position:fixed;
+    text-align:center;
+    left:0px;
+    font-size: 2em;
+    z-index:1000;
+    border-bottom: 1px solid black;
+}
+
+/* ========================= YUI dialog ========================= */
+
+.dialog .hd {
+    font-size: 12px !important;
+}
+/* discovered this margin fix by a trial and error. This can very well be a totally wrong fix, or perhaps updating
+ to the latest YUI will fix this? */
+.dialog .hd {
+    margin: 0 !important;
+}
+
+.dialog .bd {
+    margin: 0 !important;
+}
+
+.dialog .ft {
+    margin: 0 !important;
+}
+
+/* ========================= tags/labels ================== */
+/* tag0 is the least important tag in a tag cloud */
+.tag0 { font-size: 1.00em; }
+.tag1 { font-size: 1.10em; }
+.tag2 { font-size: 1.20em; }
+.tag3 { font-size: 1.30em; }
+.tag4 { font-size: 1.40em; }
+.tag5 { font-size: 1.50em; }
+.tag6 { font-size: 1.60em; }
+.tag7 { font-size: 1.70em; }
+.tag8 { font-size: 1.80em; }
+.tag9 { font-size: 1.90em; }
+
+/* ========================= textarea.jelly ================== */
+
+.textarea-preview-container {
+    text-align:left;
+}
+.textarea-preview {
+    background-color: #F0F0F0;
+    padding: 0.5em;
+}
+
+/* ========================= matrix configuration table ================== */
+table#configuration-matrix {
+	border: 1px #BBBBBB solid;
+	border-collapse: collapse;
+}
+tr.matrix-row {
+	background: #f0f0f0;
+	font-weight: bold;
+}
+td.matrix-header {
+	border: 1px #BBBBBB solid;
+	padding: 3px;
+}
+td#matrix-title {
+	padding: 3px;
+}
+td.matrix-leftcolumn {
+	border: 1px #BBBBBB solid;
+	font-weight: bold;
+	background: #f0f0f0;
+	padding: 3px;
+}
+td.matrix-cell {
+	border: 1px #BBBBBB solid;
+	text-align: center;
+}
+body.yui-skin-sam,
+.yui-skin-sam table,
+.yui-skin-sam form,
+.yui-skin-sam input,
+.yui-skin-sam td,
+.yui-skin-sam th,
+.yui-skin-sam p,
+.yui-skin-sam textarea,
+.yui-skin-sam select {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #333;
+}
+
+/*
+ * Copyright 2013 Twitter, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world @twitter by @mdo and @fat.
+ */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  margin: 0;
+}
+
+button,
+input {
+  line-height: normal;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+.btn {
+  display: inline-block;
+  *display: inline;
+  padding: 4px 12px;
+  margin-bottom: 0;
+  *margin-left: .3em;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333333;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: #f5f5f5;
+  *background-color: #e6e6e6;
+  background-image: -moz-linear-gradient(top, white, #e6e6e6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(white), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, white, #e6e6e6);
+  background-image: -o-linear-gradient(top, white, #e6e6e6);
+  background-image: linear-gradient(to bottom, white, #e6e6e6);
+  background-repeat: repeat-x;
+  border: 1px solid #cccccc;
+  *border: 0;
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  border-bottom-color: #b3b3b3;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  *zoom: 1;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn.active,
+.btn.disabled,
+.btn[disabled] {
+  color: #333333;
+  background-color: #e6e6e6;
+  *background-color: #d9d9d9;
+}
+
+.btn:active,
+.btn.active {
+  background-color: #cccccc \9;
+}
+
+.btn:first-child {
+  *margin-left: 0;
+}
+
+.btn:hover,
+.btn:focus {
+  color: #333333;
+  text-decoration: none;
+  background-position: 0 -15px;
+  -webkit-transition: background-position 0.1s linear;
+  -moz-transition: background-position 0.1s linear;
+  -o-transition: background-position 0.1s linear;
+  transition: background-position 0.1s linear;
+}
+
+.btn:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+.btn.active,
+.btn:active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.btn.disabled,
+.btn[disabled] {
+  cursor: default;
+  background-image: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.btn-default {
+  color: #333333;
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+
+.btn-default:hover,
+.btn-default:focus,
+.btn-default:active,
+.btn-default.active,
+.open .dropdown-toggle.btn-default {
+  color: #333333;
+  background-color: #ebebeb;
+  border-color: #adadad;
+}
+
+.btn-default:active,
+.btn-default.active,
+.open .dropdown-toggle.btn-default {
+  background-image: none;
+}
+
+.btn-default.disabled,
+.btn-default[disabled],
+fieldset[disabled] .btn-default,
+.btn-default.disabled:hover,
+.btn-default[disabled]:hover,
+fieldset[disabled] .btn-default:hover,
+.btn-default.disabled:focus,
+.btn-default[disabled]:focus,
+fieldset[disabled] .btn-default:focus,
+.btn-default.disabled:active,
+.btn-default[disabled]:active,
+fieldset[disabled] .btn-default:active,
+.btn-default.disabled.active,
+.btn-default[disabled].active,
+fieldset[disabled] .btn-default.active {
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+
+.btn-primary {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #006dcc;
+  *background-color: #0044cc;
+  background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
+  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+  background-image: linear-gradient(to bottom, #0088cc, #0044cc);
+  background-repeat: repeat-x;
+  border-color: #0044cc #0044cc #002a80;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary.disabled,
+.btn-primary[disabled] {
+  color: #ffffff;
+  background-color: #0044cc;
+  *background-color: #003bb3;
+}
+
+.btn-primary:active,
+.btn-primary.active {
+  background-color: #003399 \9;
+}
+
+.btn-warning {
+  color: #ffffff;
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-warning:active,
+.btn-warning.active,
+.open .dropdown-toggle.btn-warning {
+  color: #ffffff;
+  background-color: #ed9c28;
+  border-color: #d58512;
+}
+
+.btn-warning:active,
+.btn-warning.active,
+.open .dropdown-toggle.btn-warning {
+  background-image: none;
+}
+
+.btn-warning.disabled,
+.btn-warning[disabled],
+fieldset[disabled] .btn-warning,
+.btn-warning.disabled:hover,
+.btn-warning[disabled]:hover,
+fieldset[disabled] .btn-warning:hover,
+.btn-warning.disabled:focus,
+.btn-warning[disabled]:focus,
+fieldset[disabled] .btn-warning:focus,
+.btn-warning.disabled:active,
+.btn-warning[disabled]:active,
+fieldset[disabled] .btn-warning:active,
+.btn-warning.disabled.active,
+.btn-warning[disabled].active,
+fieldset[disabled] .btn-warning.active {
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+
+.btn-danger {
+  color: #ffffff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-danger:active,
+.btn-danger.active,
+.open .dropdown-toggle.btn-danger {
+  color: #ffffff;
+  background-color: #d2322d;
+  border-color: #ac2925;
+}
+
+.btn-danger:active,
+.btn-danger.active,
+.open .dropdown-toggle.btn-danger {
+  background-image: none;
+}
+
+.btn-danger.disabled,
+.btn-danger[disabled],
+fieldset[disabled] .btn-danger,
+.btn-danger.disabled:hover,
+.btn-danger[disabled]:hover,
+fieldset[disabled] .btn-danger:hover,
+.btn-danger.disabled:focus,
+.btn-danger[disabled]:focus,
+fieldset[disabled] .btn-danger:focus,
+.btn-danger.disabled:active,
+.btn-danger[disabled]:active,
+fieldset[disabled] .btn-danger:active,
+.btn-danger.disabled.active,
+.btn-danger[disabled].active,
+fieldset[disabled] .btn-danger.active {
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+
+.btn-success {
+  color: #ffffff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active,
+.btn-success.active,
+.open .dropdown-toggle.btn-success {
+  color: #ffffff;
+  background-color: #47a447;
+  border-color: #398439;
+}
+
+.btn-success:active,
+.btn-success.active,
+.open .dropdown-toggle.btn-success {
+  background-image: none;
+}
+
+.btn-success.disabled,
+.btn-success[disabled],
+fieldset[disabled] .btn-success,
+.btn-success.disabled:hover,
+.btn-success[disabled]:hover,
+fieldset[disabled] .btn-success:hover,
+.btn-success.disabled:focus,
+.btn-success[disabled]:focus,
+fieldset[disabled] .btn-success:focus,
+.btn-success.disabled:active,
+.btn-success[disabled]:active,
+fieldset[disabled] .btn-success:active,
+.btn-success.disabled.active,
+.btn-success[disabled].active,
+fieldset[disabled] .btn-success.active {
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+
+.btn-info {
+  color: #ffffff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+
+.btn-info:hover,
+.btn-info:focus,
+.btn-info:active,
+.btn-info.active,
+.open .dropdown-toggle.btn-info {
+  color: #ffffff;
+  background-color: #39b3d7;
+  border-color: #269abc;
+}
+
+.btn-info:active,
+.btn-info.active,
+.open .dropdown-toggle.btn-info {
+  background-image: none;
+}
+
+.btn-info.disabled,
+.btn-info[disabled],
+fieldset[disabled] .btn-info,
+.btn-info.disabled:hover,
+.btn-info[disabled]:hover,
+fieldset[disabled] .btn-info:hover,
+.btn-info.disabled:focus,
+.btn-info[disabled]:focus,
+fieldset[disabled] .btn-info:focus,
+.btn-info.disabled:active,
+.btn-info[disabled]:active,
+fieldset[disabled] .btn-info:active,
+.btn-info.disabled.active,
+.btn-info[disabled].active,
+fieldset[disabled] .btn-info.active {
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+
+.btn-link {
+  color: #428bca;
+  font-weight: normal;
+  cursor: pointer;
+  border-radius: 0;
+}
+
+.btn-link,
+.btn-link:active,
+.btn-link[disabled],
+fieldset[disabled] .btn-link {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.btn-link,
+.btn-link:hover,
+.btn-link:focus,
+.btn-link:active {
+  border-color: transparent;
+}
+
+.btn-link:hover,
+.btn-link:focus {
+  color: #2a6496;
+  text-decoration: underline;
+  background-color: transparent;
+}
+
+.btn-link[disabled]:hover,
+fieldset[disabled] .btn-link:hover,
+.btn-link[disabled]:focus,
+fieldset[disabled] .btn-link:focus {
+  color: #999999;
+  text-decoration: none;
+}
+
+.btn-lg {
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 6px;
+}
+
+.btn-sm,
+.btn-xs {
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+
+.btn-xs {
+  padding: 1px 5px;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.btn-block + .btn-block {
+  margin-top: 5px;
+}
+
+input[type="submit"].btn-block,
+input[type="reset"].btn-block,
+input[type="button"].btn-block {
+  width: 100%;
+}
+
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.alert h4 {
+  margin-top: 0;
+  color: inherit;
+}
+
+.alert .alert-link {
+  font-weight: bold;
+}
+
+.alert > p,
+.alert > ul {
+  margin-bottom: 0;
+}
+
+.alert > p + p {
+  margin-top: 5px;
+}
+
+.alert-dismissable {
+  padding-right: 35px;
+}
+
+.alert-dismissable .close {
+  position: relative;
+  top: -2px;
+  right: -21px;
+  color: inherit;
+}
+
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+}
+
+.alert-success hr {
+  border-top-color: #c9e2b3;
+}
+
+.alert-success .alert-link {
+  color: #356635;
+}
+
+.alert-info {
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  color: #3a87ad;
+}
+
+.alert-info hr {
+  border-top-color: #a6e1ec;
+}
+
+.alert-info .alert-link {
+  color: #2d6987;
+}
+
+.alert-warning {
+  background-color: #fcf8e3;
+  border-color: #fbeed5;
+  color: #c09853;
+}
+
+.alert-warning hr {
+  border-top-color: #f8e5be;
+}
+
+.alert-warning .alert-link {
+  color: #a47e3c;
+}
+
+.alert-danger {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+}
+
+.alert-danger hr {
+  border-top-color: #e6c1c7;
+}
+
+.alert-danger .alert-link {
+  color: #953b39;
+}
+
+/****************     end bootstrap styles        ********************/
+pre, code, .CodeMirror {
+  font-family: Consolas, Monaco, monospace;
+}
+
+.cm-s-default {
+  border: none !important;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="password"],
+select,
+textarea,
+.CodeMirror {
+  font-size: 16px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="password"],
+select,
+textarea {
+  padding: 6px 12px;
+}
+
+#main-table {
+  background-image: none !important;
+}
+
+/********************   top panel styles      ***********************/
+.yui-skin-sam #top-panel {
+ background: url("img_TopBackground.jpg") repeat
+  background-image: none;
+  border-bottom: 1px solid #ccc;
+}
+
+.yui-skin-sam #top-panel img {
+  display: none;
+}
+
+.yui-skin-sam #search-box {
+  font-size: 16px;
+  padding: 5px 10px;
+  background-image: none;
+  margin: 7px;
+}
+
+/******************* side panel styles ***********************/
+#side-panel {
+  padding-left: 15px;
+}
+
+#tasks {
+  margin-top: 5px;
+  font-size: 14px;
+  margin-right: 30px;
+  padding-left: 0;
+}
+
+#tasks a,
+#buildHistory a {
+  text-decoration: none;
+}
+
+#tasks a:hover,
+#buildHistory a:hover {
+  text-decoration: underline;
+}
+
+.task a:nth-child(n+1) {
+  padding: 10px 10px 0px 0;
+  display: inline-block;
+}
+
+/*.task a:first-child,
+.task img {
+  display: none;
+}*/
+
+/* make the link target bigger */
+#buildHistory .model-link {
+  padding: 10px 16px 10px 0;
+}
+
+#buildHistory .pane-header {
+  font-size: 16px;
+}
+
+#buildHistory .build-row td:not(.pane-header) {
+  padding: 10px 0 10px 10px;
+}
+
+.doony-canvas {
+  margin-bottom: -2px;
+}
+
+#buildHistory .build-row:nth-child(2n) {
+  background-color: #f9f9f9;
+}
+
+#buildHistory .build-row {
+  border-top: 1px solid #ddd;
+}
+
+#buildHistory .build-row:last-child {
+  display: none;
+}
+
+.healthReport img {
+  vertical-align: top;
+  padding-top: 1px;
+  display: inline-block;
+}
+
+/*
+ * The console output doesn't have an ID on it, sadly, so style its place in
+ * the DOM and hope nothing else is affected
+ *
+ * If you hit consoleText you can view the raw console text, let's style that
+ * too.
+ */
+body > pre,
+#main-panel > pre {
+  font-size: 14px;
+  background-color: #111;
+  color: #eee;
+  padding: 10px 10px 30px;
+  border-radius: 3px;
+}
+
+/**
+ * Set the link color in console output
+ */
+body > pre a,
+body > pre a:visited,
+#main-panel pre a,
+#main-panel pre a:visited {
+  color: #ED4A6A;
+}
+
+/** style permalinks **/
+#main-panel > ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+#main-panel > ul .model-link,
+#main-panel > ul li {
+  padding-bottom: 7px;
+}
+
+#main-panel {
+  padding-left: 15px;
+}
+
+a.yuimenulabel, a.yuimenuitemlabel,
+.yui-skin-sam .yuimenuitemlabel {
+  cursor: pointer;
+}
+
+.doony-alert {
+  max-width: 750px;
+  margin-top: 10px;
+}
+
+.doony-build {
+  margin: 0 0 15px 30px;
+  min-width: 100px;
+}
+
+#doony-title {
+  color: #fff;
+  margin: 5px 10px;
+}
+
+/* copied from twitter bootstrap */
+.doony-callout {
+  margin: 0;
+  padding: 20px 30px 20px 25px;
+  border-left: 5px solid #eee;
+  font-weight: bold;
+  font-size: 16px;
+  display: inline-block;
+}
+
+.doony-callout a,
+#matrix .doony-callout a,
+.doony-callout a:visited {
+  text-decoration: none;
+}
+
+.doony-callout-info {
+  background-color: #f0f7fd;
+  border-color: #d0e3f0;
+}
+
+.doony-downstream-link {
+  display: block;
+}
+
+.doony-circle {
+  border-radius: 50%;
+}
+
+.doony-circle-aborted {
+  background: #999;
+  background-image: -moz-radial-gradient(3px 3px 45deg, circle cover, #cccccc 0%, #999999 100%);
+  background-image: -webkit-radial-gradient(3px 3px, circle cover, #cccccc, #999999);
+  background-image: radial-gradient(circle at 3px 3px, #cccccc 0%, #999999 100%);
+}
+
+.doony-circle-failure {
+  background: #ac2925;
+  background-image: -moz-radial-gradient(3px 3px 45deg, circle cover, #d9534f 0%, #ac2925 100%);
+  background-image: -webkit-radial-gradient(3px 3px, circle cover, #d9534f, #ac2925);
+  background-image: radial-gradient(circle at 3px 3px, #d9534f 0%, #ac2925 100%);
+}
+
+.doony-circle-success {
+  background: #397439;
+  background-image: -moz-radial-gradient(3px 3px 45deg, circle cover, #72d472 0%, #397439 100%);
+  background-image: -webkit-radial-gradient(3px 3px, circle cover, #72d472, #397439);
+  background-image: radial-gradient(circle at 3px 3px, #72d472 0%, #397439 100%);
+}
+
+.doony-circle-warning {
+  background: #f0ad4e;
+  background-image: -moz-radial-gradient(3px 3px 45deg, circle cover, #f0ad4e 0%, #d58512 100%);
+  background-image: -webkit-radial-gradient(3px 3px, circle cover, #f0ad4e, #d58512);
+  background-image: radial-gradient(circle at 3px 3px, #f0ad4e 0%, #d58512 100%);
+}
+
+.doony-theme {
+  color: grey;
+  margin-right: 10px;
+}
+
+.yui-skin-sam .phing-target {
+  font-weight: bold;
+  color: #0ABFBC;
+}
+
+.yui-skin-sam .phing-outcome-finished {
+  color: #C7FCD7;
+}
+
+/* Remove the bouncy balls */
+#buildHistory img[src*="anime.gif"] {
+  visibility: hidden;
+}
+
+/**
+ * XXX For us this is the "Jobs List" plugin. This probably doesn't work well for
+ * all use cases.
+ */
+.yui-skin-sam #dashboard_portlet_1 tr:nth-child(n+4) td {
+  padding: 15px 3px;
+}
+
+/* Fix add description */
+#description img {
+  padding-right: 5px;
+}
+
+#description div {
+  margin-top: 10px;
+}
+
+/* Add some margin to the disable project button */
+#main-panel div[align=right] form[action=disable] {
+  margin-top: 10px;
+}
+
+/* Configuration/Settings page styles */
+.setting-input {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
